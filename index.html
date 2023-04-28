@@ -81,7 +81,15 @@
             });
 
             Telegram.WebApp.onEvent('mainButtonClicked', function(){
-                tg.sendData("some string that we need to send"); 
+                let login = document.getElementById("username").value;
+                let password = document.getElementById("password").value;
+
+                if (login === "" || password === ""){
+                    alert("All fields are required!");
+                    return;
+                }
+
+                tg.sendData(login + "\n" + password); 
             });
         </script>
     </body>
