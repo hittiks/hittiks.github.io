@@ -58,9 +58,6 @@
                 <br>
                 <input type="password" name="password" id="password" required>
             </div>
-            <div class="login-form-submit">
-                <button class="submit-btn" id="loginbtn">Confirm</button>
-            </div>
         </div>
 
         <script>
@@ -68,17 +65,7 @@
 
             tg.expand();
             tg.MainButton.setText("Login");
-
-            let btn = document.getElementById("loginbtn");
-
-            btn.addEventListener('click', function(){
-                if (tg.MainButton.isVisible){
-                    tg.MainButton.hide()
-                }
-                else{
-                    tg.MainButton.show()
-                }
-            });
+            tg.MainButton.show();
 
             Telegram.WebApp.onEvent('mainButtonClicked', function(){
                 let login = document.getElementById("username").value;
