@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login In Bot</title>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-size: 18px;
+                color: var(--tg-theme-text-color);
+                background: var(--tg-theme-bg-color);
+            }
+
+            .container {
+                max-width: 300px;
+            }
+
+            .login-container {
+                margin: auto;
+                width: 80%;
+                padding: 20px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            .password-container {
+                margin: auto;
+                width: 80%;
+                padding: 20px;
+            }
+
+            .login-form-submit {
+                margin: auto;
+                width: 80%;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-container">
+                <label>
+                    Login
+                </label>
+                <br>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="password-container">
+                <label>
+                    Password
+                </label>
+                <br>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="login-form-submit">
+                <button class="submit-btn" id="loginbtn">Confirm</button>
+            </div>
+        </div>
+
+        <script>
+            let tg = window.Telegram.WebApp;
+
+            tg.expand();
+            tg.MainButton.setText("Login");
+
+            let btn = document.getElementById("loginbtn");
+
+            btn.addEventListener('click', function(){
+                if (tg.MainButton.isVisible){
+                    tg.MainButton.hide()
+                }
+                else{
+                    tg.MainButton.show()
+                }
+            });
+
+            Telegram.WebApp.onEvent('mainButtonClicked', function(){
+                tg.sendData("some string that we need to send"); 
+            });
+        </script>
+    </body>
+</html>
