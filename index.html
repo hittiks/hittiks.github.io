@@ -15,7 +15,7 @@
             }
 
             .container {
-                height: 40vh;
+                height: fit-content;
                 margin: auto;
             }
             
@@ -46,6 +46,10 @@
                 font-size: 1em;
             }
 
+            .error-container {
+                padding-top: 1em;
+                color: red;
+            }
         </style>
     </head>
     <body>
@@ -64,6 +68,11 @@
                 <br>
                 <input type="password" name="password" id="password" required placeholder="password">
             </div>
+            <div class="error-container">
+                <label id="wrong-data-hint">
+                    
+                </label>
+            </div>
         </div>
 
         <script>
@@ -78,7 +87,8 @@
                 let password = document.getElementById("password").value;
 
                 if (login === "" || password === ""){
-                    alert("All fields are required!");
+                    el = document.getElementById("wrong-data-hint");
+                    el.value = "All fields are required!";
                     return;
                 }
 
